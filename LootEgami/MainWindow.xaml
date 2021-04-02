@@ -5,8 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LootEgami"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Lootegami" Height="400" Width="600">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!--<TextBlock Grid.Row="1">안녕</TextBlock>-->
+        <Button Content="추가" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Margin="10,10,0,0" 
+                Click="Button_Click_ImageLoad" 
+                Cursor="Hand"
+                Width="40"/>        
+        <Button Content="삭제" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Margin="55,10,0,0" 
+                Click="Button_Click_ImageDelete" 
+                Cursor="Hand" 
+                Width="40"/>
+        <Button Content="초기화" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Margin="100,10,0,0" 
+                Click="Button_Click_ImageClear" 
+                Cursor="Hand" 
+                Width="40"/>
         
+        <ListBox x:Name="FilePathList" 
+                 Grid.Column="1" 
+                 HorizontalAlignment="Left" 
+                 Height="349" 
+                 VerticalAlignment="Top" 
+                 Width="422" />
     </Grid>
 </Window>
