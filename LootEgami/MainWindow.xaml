@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LootEgami"
         mc:Ignorable="d"
         Title="Lootegami" Height="400" Width="600">
-    <Grid Margin="10">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
@@ -22,7 +22,7 @@
                 Margin="10,10,0,0" 
                 Click="Button_Click_ImageLoad" 
                 Cursor="Hand"
-                Width="40"/>        
+                Width="40"/>
         <Button Content="삭제" 
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Top" 
@@ -37,12 +37,12 @@
                 Click="Button_Click_ImageClear" 
                 Cursor="Hand" 
                 Width="40"/>
-        
+
         <ListBox x:Name="FilePathList" 
                  Grid.Column="1" 
                  HorizontalAlignment="Left" 
-                 Height="349" 
                  VerticalAlignment="Top" 
-                 Width="422" />
+                 Height="349" 
+                 Width="422" MouseDoubleClick="FilePathList_MouseDoubleClick"/>
     </Grid>
 </Window>

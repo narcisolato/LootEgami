@@ -50,5 +50,15 @@ namespace LootEgami
         {
             FilePathList.Items.Clear();
         }
+
+        private void FilePathList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var image = new Image();
+            image.Source = new BitmapImage(new Uri(FilePathList.SelectedItem.ToString()));
+
+            var imageWindow = new LootEgami.Dialog.ImageWindow();
+            imageWindow.Show();
+            imageWindow.ImageBox.Source = image.Source;
+        }
     }
 }
