@@ -38,11 +38,23 @@
                 Cursor="Hand" 
                 Width="40"/>
 
+        <Button Content="저장" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Margin="10,39,0,0" 
+                Click="Button_Click_ImageSave" 
+                Cursor="Hand" 
+                Width="40"/>
+
         <ListBox x:Name="FilePathList" 
                  Grid.Column="1" 
                  HorizontalAlignment="Left" 
                  VerticalAlignment="Top" 
                  Height="349" 
-                 Width="422" MouseDoubleClick="FilePathList_MouseDoubleClick"/>
+                 Width="422" 
+                 MouseDoubleClick="FilePathList_MouseDoubleClick" 
+                 KeyUp="FilePathList_KeyUp" 
+                 MouseLeftButtonUp="FilePathList_MouseLeftButtonUp" 
+                 />
     </Grid>
 </Window>

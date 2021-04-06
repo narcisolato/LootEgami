@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LootEgami.Dialog;
+using System.IO;
 
 namespace LootEgami
 {
@@ -23,21 +25,22 @@ namespace LootEgami
             InitializeComponent();
         }
 
+        ImageWindow imageWindow = new ImageWindow();
+            
         private void Button_Click_ImageLoad(object sender, RoutedEventArgs e)
         {
-            var openFileDialog = new OpenFileDialog();
+            //나중에 using 사용 확인할 것
+            //https://docs.microsoft.com/ko-kr/dotnet/api/system.windows.forms.openfiledialog?view=net-5.0
+            var openFileDialog = new OpenFileDialog();            
+            openFileDialog.Filter = "Image Files | *.jpg; *.png; *.gif; *.bmp";
+            openFileDialog.Multiselect = true;
+            if (openFileDialog.ShowDialog().GetValueOrDefault())
             {
-                openFileDialog.Filter = "Image Files | *.jpg; *.png; *.gif; *.bmp";
-                openFileDialog.Multiselect = true;
-
-                if (openFileDialog.ShowDialog().GetValueOrDefault())
+                foreach (var i in openFileDialog.FileNames)
                 {
-                    foreach (var i in openFileDialog.FileNames)
-                    {
-                        FilePathList.Items.Add(i);
-                    }
-                }                
-            }
+                    FilePathList.Items.Add(i);
+                }
+            }     
         }
 
         private void Button_Click_ImageDelete(object sender, RoutedEventArgs e)
@@ -53,12 +56,29 @@ namespace LootEgami
 
         private void FilePathList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var image = new Image();
-            image.Source = new BitmapImage(new Uri(FilePathList.SelectedItem.ToString()));
+            //var image = new Image();
+            //image.Source = new BitmapImage(new Uri(FilePathList.SelectedItem.ToString()));
 
-            var imageWindow = new LootEgami.Dialog.ImageWindow();
-            imageWindow.Show();
-            imageWindow.ImageBox.Source = image.Source;
+            //var imageWindow = new LootEgami.Dialog.ImageWindow();
+            //imageWindow.Show();
+            //imageWindow.ImageBox.Source = image.Source;
+
+            imageWindow.LoadImage(FilePathList.SelectedItem.ToString());
+        }
+       
+        private void FilePathList_KeyUp(object sender, KeyEventArgs e)
+        {
+            imageWindow.LoadImage(FilePathList.SelectedItem.ToString());
+        }
+
+        private void FilePathList_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            imageWindow.LoadImage(FilePathList.SelectedItem.ToString());
+        }
+
+        private void Button_Click_ImageSave(object sender, RoutedEventArgs e)
+        {
+            imageWindow.SaveImage();
         }
     }
 }
